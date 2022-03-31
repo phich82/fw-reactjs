@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@assets": ["assets"],
+      "@components": ["components"],
+      "@config": ["config"],
+      "@hooks": ["hooks"],
+      "@locales": ["locales"],
+      "@middlewares": ["middlewares"],
+      "@modules": ["modules"],
+      "@services": ["services"],
+      "@redux": ["redux"],
+      "@routes": ["routes"],
+      "@stores": ["stores"],
+      "@utils": ["services"],
+      "@shared": ["modules/shared"],
+      "@mockup": [".mockup"],
+      "@validations": ["validations"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
