@@ -6,7 +6,7 @@ import { httpGoogle, Validator, __ } from '@services';
 /**
  * @Important
  *
- * After creating a new rule, you open 'services/common/Rules.js' file.
+ * After creating a new rule, you open 'services/common/Rule.js' file.
  * Then, add this rule to it.
  */
 

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import validate from 'validate.js';
-import Rules from './Rules';
+import Rule from './Rule';
 
 // Before using it (datetime), we must add the parse and format functions
 // Here is a sample implementation using moment.js
@@ -22,7 +22,7 @@ const buildConstraints = (rules, messages = {}, customFields = {}) => {
   if (!rules || Array.isArray(rules) || typeof rules !== 'object') {
     throw new Error("Parameter 'rules' must be an object or a json.");
   }
-  const RuleSet = { ...Rules };
+  const RuleSet = { ...Rule };
   let constraints = {};
   messages = messages || {};
   customFields = customFields || {};

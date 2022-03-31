@@ -83,7 +83,7 @@ const resolveRuleOptions = (options, typesKey = {}) => {
 /**
  * Wrap rules
  */
-const Rules = {
+const Rule = {
   required: (messages = {}, field = '') => ({
     presence: {
       message: resolveValidationMessage(messages, field, 'required', 'validation_error_empty_input'),
@@ -309,4 +309,4 @@ const Rules = {
   }),
 };
 
-export default Rules;
+export default Rule;

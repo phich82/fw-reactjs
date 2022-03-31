@@ -3,7 +3,7 @@ import { withRouter } from './../../../utils';
 
 import '../styles/Home.css';
 import { i18n, trans, changeLocale } from '../../../locales';
-import { Rules, Validator } from '../../../services';
+import { Validator } from '../../../services';
 
 const Home = ({ lang, actChangeLanguage, navigation }) => {
   console.log('navigation => ', navigation);
