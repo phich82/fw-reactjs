@@ -1,4 +1,4 @@
-import { keyExistLocales, trans } from '../../locales';
+import { trans, keyExistLocales } from '@locales';
 
 const PREFIX_VALIDATION_LOCALE = 'validation_field_';
 
@@ -13,30 +13,6 @@ const isJsonString = function(jsonStr) {
   return isJson;
 };
 
-const accessJson = (json, keys) => {
-  let o = { ...json };
-  let v;
-  keys.split('.').forEach((k, idx) => {
-    if (idx === 0 && !o.hasOwnProperty(k)) {
-      throw new Error(`Key [${k}] not exists in: ${JSON.stringify(o)}`);
-    } else if (idx > 0 && !v.hasOwnProperty(k)) {
-      throw new Error(`Key [${k}] not exists in: ${JSON.stringify(v)}`);
-    }
-    v = o[k];
-  });
-  return v;
-};
-
-const checkKeyExists = (json, keys) => {
-  let isExist = true;
-  try {
-    accessJson(json, keys);
-  } catch (err) {
-    isExist = false;
-  }
-  return isExist;
-};
-
 const transToLocale = field => {
   let keyCheck = `${PREFIX_VALIDATION_LOCALE}${field}`;
   if (keyExistLocales(keyCheck)) {
@@ -46,14 +22,9 @@ const transToLocale = field => {
 };
 
 const resolveValidationMessage = (messages, field, rule, targetKey, appendFields = {}) => {
-  console.log({messages, field, rule, targetKey, appendFields})
-  // if (checkKeyExists(messages, `${field}.${rule}`)) {
-  //   return '^' + messages[field][rule];
-  // }
   if (messages && messages[field] && messages[field].hasOwnProperty(rule)) {
-    console.log('resolveValidationMessage => ', '^' + messages[field][rule])
     return '^' + messages[field][rule];
-  }console.log('transToLocale(field) => ', transToLocale(field))
+  }
   return '^' + trans(targetKey, { input: transToLocale(field), ...appendFields });
 };
 
@@ -83,7 +54,7 @@ const resolveRuleOptions = (options, typesKey = {}) => {
 /**
  * Wrap rules
  */
-const Rule = {
+export const RuleSet = {
   required: (messages = {}, field = '') => ({
     presence: {
       message: resolveValidationMessage(messages, field, 'required', 'validation_error_empty_input'),
@@ -308,5 +279,3 @@ const Rule = {
     }
   }),
 };
-
-export default Rule;

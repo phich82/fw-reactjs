@@ -1,12 +1,12 @@
 /*********************************************
  *********** Define New Rules Here ***********
  *********************************************/
-import { httpGoogle, Validator, __ } from '@services';
+import { GoogleHttp, Validator, __ } from '../../services';
 
 /**
  * @Important
  *
- * After creating a new rule, you open 'services/common/Rule.js' file.
+ * After creating a new rule, you open './RuleSet.js' file.
  * Then, add this rule to it.
  */
 
@@ -24,8 +24,8 @@ Validator.createRuleAsync('custom_async', (params, resolve, reject) => {
   if (!__.isNumeric(value)) {
     return resolve(options.message || 'must be an integer.');
   }
-  httpGoogle.get(`/todos/${value}`).then(result => {
+  GoogleHttp.get(`/todos/${value}`).then(result => {
     console.log('result => ', result);
     resolve(result.success ? null: result.message);
-  })
+  }).catch (error => reject(error && typeof error === 'object' ? error.getMessage() : error))
 });

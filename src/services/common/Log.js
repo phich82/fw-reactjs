@@ -1,4 +1,4 @@
-import { ENV } from "../../config";
+import { ENV } from '@config';
 
 const _isFn = fn => typeof fn === 'function';
 const _getDateTimeStr = (separatorDate = '-', separatorTime = ':') => {

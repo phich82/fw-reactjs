@@ -274,6 +274,20 @@ __.getDeepObjectValue = function(obj, keypath) {
   });
 };
 
+__.getNestedKeyObjectValue = (obj, key) => {
+  let o = { ...obj };
+  let v;
+  key.split('.').forEach((k, idx) => {
+    if (idx === 0 && !o.hasOwnProperty(k)) {
+      throw new Error(`Key [${k}] not exists in: ${JSON.stringify(o)}`);
+    } else if (idx > 0 && !v.hasOwnProperty(k)) {
+      throw new Error(`Key [${k}] not exists in: ${JSON.stringify(v)}`);
+    }
+    v = o[k];
+  });
+  return v;
+};
+
 // This returns an object with all the values of the form.
 // It uses the input name as key and the value as value
 // So for example this:

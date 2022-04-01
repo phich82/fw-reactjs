@@ -1,6 +1,6 @@
 import moment from 'moment';
 import validate from 'validate.js';
-import Rule from './Rule';
+import { RuleSet } from './../../globals/validations';
 
 // Before using it (datetime), we must add the parse and format functions
 // Here is a sample implementation using moment.js
@@ -22,7 +22,7 @@ const buildConstraints = (rules, messages = {}, customFields = {}) => {
   if (!rules || Array.isArray(rules) || typeof rules !== 'object') {
     throw new Error("Parameter 'rules' must be an object or a json.");
   }
-  const RuleSet = { ...Rule };
+  const Rules = { ...RuleSet };
   let constraints = {};
   messages = messages || {};
   customFields = customFields || {};
@@ -39,12 +39,12 @@ const buildConstraints = (rules, messages = {}, customFields = {}) => {
       let paramsRule = partsRule.length > 1 ? rule.substr(partsRule[0].length + 1) : '';
       rule = partsRule[0];
 
-      if (!RuleSet.hasOwnProperty(rule)) {
+      if (!Rules.hasOwnProperty(rule)) {
         throw new Error('Rule [' + rule + '] not exists.');
       }
       return {
         ...carry,
-        ...RuleSet[rule](messages, field, paramsRule)
+        ...Rules[rule](messages, field, paramsRule)
       };
     }, {});
   });
@@ -54,10 +54,10 @@ const buildConstraints = (rules, messages = {}, customFields = {}) => {
 
 const Validator = {};
 
-Validator.Fn = validate;
+Validator.instance = validate;
 
 // Add props of object to given object
-Validator.extend = (oldRule, newRule) => Validator.Fn.extend(oldRule, newRule);
+Validator.extend = (oldRule, newRule) => Validator.instance.extend(oldRule, newRule);
 
 /**
  * Sync validation
@@ -87,7 +87,7 @@ Validator.validateAsync = (attributes, rules, messages = {}, customFields = {}) 
 
 // Create your own rule (validator)
 Validator.createRule = function(name, fn) {
-  Validator.Fn.validators[name] = fn; // (value, options, key, attributes)
+  Validator.instance.validators[name] = fn; // (value, options, key, attributes)
 };
 
 // Create an async rule (validator)
@@ -104,7 +104,7 @@ Validator.collectFormValues = (form) => {
   if (typeof form === 'string') {
     form = document.querySelector(form);
   }
-  return Validator.Fn.collectFormValues(form);
-}
+  return Validator.instance.collectFormValues(form);
+};
 
 export default Validator;

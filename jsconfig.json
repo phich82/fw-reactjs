@@ -13,10 +13,11 @@
       "@redux": ["redux"],
       "@routes": ["routes"],
       "@stores": ["stores"],
-      "@utils": ["services"],
+      "@utils": ["utils"],
       "@shared": ["modules/shared"],
-      "@mockup": [".mockup"],
-      "@validations": ["validations"]
+      "@globals": ["globals"],
+      "@validations": ["globals/validations"],
+      "@mockup": [".mockup"]
     }
   },
   "exclude": ["node_modules", "dist"]

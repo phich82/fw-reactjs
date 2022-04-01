@@ -195,6 +195,11 @@ i18n.on('languageChanged', function(lang) {
 //   key: 'hello from namespace 1'
 // });
 
+export const t = (key, options = {}) => i18n.t(key, options);
+export const trans = t;
+export const translate = t;
+export const changeLocale = lang => i18n.changeLanguage(lang);
+
 export const keyExistLocales = key => {
   if (i18n.exists) {
     return i18n.exists(key);

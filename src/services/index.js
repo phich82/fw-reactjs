@@ -1,22 +1,19 @@
 import Log from './common/Log';
-import AxiosInstance from './common/AxiosInstance';
-import Validator from './common/Validator';
-import Rule from './common/Rule';
-import { httpApi, httpGoogle } from './Https';
 import HTTP_CODE from './common/HttpCode';
-import Http from './common/Http';
+import { Http, GoogleHttp, ResreqHttp } from './HttpService';
 import Api from './Api';
+import Pipe from './common/Pipe';
 import __ from './common/Helper';
+import Validator from './common/Validator';
 
 export {
   __,
   Log,
   Api,
   Http,
-  httpApi,
-  httpGoogle,
+  GoogleHttp,
+  ResreqHttp,
   HTTP_CODE,
-  Rule,
   Validator,
-  AxiosInstance,
+  Pipe,
 };

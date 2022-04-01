@@ -1,5 +1,5 @@
-import { ENDPOINT } from '../config';
-import { httpApi as http } from './Https';
+import { ENDPOINT } from '@config';
+import { Http } from './HttpService';
 import HTTP_CODE from './common/HttpCode';
 import Log from './common/Log';
 
@@ -80,8 +80,8 @@ Api.signIn = async (params, callback = () => {}, showSpinner = true) => {
   try {
     _validateFn(callback);
 
-    const response = await http.post(ENDPOINT.SIGN_IN, params, { showSpinner });
-    const { code, data, message } = response.data;
+    const response = await Http.post(ENDPOINT.SIGN_IN, params, { showSpinner });
+    let { code, data, message } = response.data;
     const success = code === HTTP_CODE.OK;
       if (!success) {
         data = _getErrorMessage(message);

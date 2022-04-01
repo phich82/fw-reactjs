@@ -1,5 +1,5 @@
 import { CONFIG, ENDPOINT } from '../config';
-import { httpApi as http, HTTP_CODE, Log } from '../services';
+import { Http, HTTP_CODE, Log } from '../services';
 import { themes } from '../themes';
 
 /**
@@ -76,13 +76,13 @@ export const initApplication = () => async (dispatch, getState) => {
     }
   };
 
-  http.instance.interceptors.request.use(
+  Http.instance.interceptors.request.use(
     config => {
-      Log.info('[http][req] => ', config?.url, config);
+      Log.info('[Http][Req] => ', config?.url, config);
       if (config.showSpinner) {
-        Log.info('[http][req][requestCount: first] => ', requestCount);
+        Log.info('[Http][Req][requestCount: first] => ', requestCount);
         requestCount++;
-        Log.info('[http][req][requestCount: increment] => ', requestCount);
+        Log.info('[Http][Req][requestCount: increment] => ', requestCount);
         let isLoading = getState().modalReducer.isLoading;
         !isLoading && dispatch(setLoadingVisibility(true));
       }
@@ -99,18 +99,18 @@ export const initApplication = () => async (dispatch, getState) => {
       return config;
     },
     err => {
-      Log.info('[http][req][error] => ', err?.config?.url, err);
+      Log.info('[Http][Req][Error] => ', err?.config?.url, err);
       return Promise.reject(err);
     },
   );
 
-  http.instance.interceptors.response.use(
+  Http.instance.interceptors.response.use(
     res => {
-      Log.info('[http][res] => ', res?.config?.url, res);
+      Log.info('[Http][Res] => ', res?.config?.url, res);
 
       const { code, message } = res.data;
       let isLoading = getState().modalReducer.isLoading;
-      Log.info('[http][res][isLoading] => ', isLoading);
+      Log.info('[Http][Res][isLoading] => ', isLoading);
 
       // Only show error modal on demand for each APIs
       // let isCriticalCode = [
@@ -154,7 +154,7 @@ export const initApplication = () => async (dispatch, getState) => {
       return res;
     },
     err => {
-      Log.warn('[http][res][error] => ', err?.config?.url, err);
+      Log.warn('[Http][Res][Error] => ', err?.config?.url, err);
       if (err.config.showSpinner) {
         requestCount = 0;
         let isLoading = getState().modalReducer.isLoading;

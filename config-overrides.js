@@ -2,7 +2,7 @@ const { alias } = require('react-app-rewire-alias');
 
 module.exports = function override(config) {
   var baseUrl = 'src';
-  alias({
+  return alias({
     '@components': `${baseUrl}/components`,
     "@config": `${baseUrl}/config`,
     "@hooks": `${baseUrl}/hooks`,
@@ -13,11 +13,12 @@ module.exports = function override(config) {
     "@redux": `${baseUrl}/redux`,
     "@routes": `${baseUrl}/routes`,
     "@stores": `${baseUrl}/stores`,
-    "@utils": `${baseUrl}/services`,
+    "@utils": `${baseUrl}/utils`,
     "@shared": `${baseUrl}/modules/shared`,
+    "@globals": `${baseUrl}/globals`,
+    "@validations": `${baseUrl}/globals/validations`,
     "@mockup": `${baseUrl}/.mockup`,
-    "@validations": `${baseUrl}/validations`,
   })(config);
 
-  return config;
+  // return config;
 };
