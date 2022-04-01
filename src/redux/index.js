@@ -1,6 +1,5 @@
-import { CONFIG, ENDPOINT } from '../config';
-import { Http, HTTP_CODE, Log } from '../services';
-import { themes } from '../themes';
+import { CONFIG, ENDPOINT } from '@config';
+import { Http, HTTP_CODE, Log } from '@services';
 
 /**
  * Types

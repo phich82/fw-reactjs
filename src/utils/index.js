@@ -1,6 +1,7 @@
 import { usePreventDoubleClick } from '../hooks';
 import withPreventDoubleClick from './withPreventDoubleClick';
 import withRouter from './withRouter';
+import withTheme from './withTheme';
 
 /*********************************************************************/
 const ClickableBox = ({ text, onClick, ...rest }) => (
@@ -48,4 +49,5 @@ export {
   WithPreventDoubleClickExample,
   WithPreventDoubleClickDemo,
   withRouter,
+  withTheme,
 };

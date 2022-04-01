@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { ThemeContextProvider, themes } from '../../../themes';
-import { ThemeButton } from '../../../components';
 import { Footer, Header } from '../../../modules';
-
-import '../styles/App.css';
 import { WithPreventDoubleClickDemo, WithPreventDoubleClickExample } from '../../../utils';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import { ThemeContextProvider, themes, ThemeButton } from '@modules';
+
+import '../styles/App.css';
 
 const App = ({ lang, isLoggedIn, theme, actChangeTheme }) => {
   const toggleTheme = () => {
