@@ -15,8 +15,9 @@ module.exports = function override(config) {
     "@stores": `${baseUrl}/stores`,
     "@utils": `${baseUrl}/utils`,
     "@shared": `${baseUrl}/modules/shared`,
-    "@globals": `${baseUrl}/globals`,
-    "@validations": `${baseUrl}/globals/validations`,
+    "@bootstrap": `${baseUrl}/bootstrap`,
+    "@validations": `${baseUrl}/bootstrap/validations`,
+    "@ui": `${baseUrl}/components/ui`,
     "@mockup": `${baseUrl}/.mockup`,
   })(config);
 

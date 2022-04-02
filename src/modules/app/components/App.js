@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Footer, Header } from '../../../modules';
-import { WithPreventDoubleClickDemo, WithPreventDoubleClickExample } from '../../../utils';
+import { WithPreventDoubleClick, WithPreventDoubleClickHook } from '../../../utils';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { ThemeContextProvider, themes, ThemeButton } from '@modules';
 
@@ -31,15 +31,17 @@ const App = ({ lang, isLoggedIn, theme, actChangeTheme }) => {
         <NavLink to='/home?brand=envy' style={({ isActive }) =>({color: isActive ? 'red' : ''})}>Nav Link</NavLink>
 
         <ThemeButton theme={themes[theme]} />
-        <WithPreventDoubleClickExample
-          text={'Click Me'}
+
+        <WithPreventDoubleClick
+          text="Click Me"
           onClick={() => console.log('Clicked:Example')}
         />
-        <WithPreventDoubleClickDemo
+        <WithPreventDoubleClickHook
           text={'Click or doubleclick me'}
           onClick={() => console.log('Clicked:Demo')}
           onDoubleClick={() => console.log('Clicked double')}
-          style={{ backgroundColor: 'red' }}
+          style={{ width: '200px', textAlign: 'center' }}
+          containerStyle={{padding: '5px', backgroundColor: 'red'}}
         />
 
         <Outlet />

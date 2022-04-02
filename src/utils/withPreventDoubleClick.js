@@ -3,18 +3,16 @@ import { debounce } from 'lodash';
 
 const withPreventDoubleClick = WrappedComponent => {
   class PreventDoubleClick extends React.PureComponent {
-    debouncedOnClick = () => {
-      this.props.onClick && this.props.onClick();
-    };
+    noop = () => {};
 
-    clickedBounce = () => {
-      return this.props.clickedTime;
-    };
-
-    onClick = debounce(this.debouncedOnClick, this.clickedBounce() || 300, {
-      leading: true,
-      trailing: false,
-    });
+    onClick = debounce(
+      this.props.onClick || this.noop,
+      this.props.delay || 300,
+      {
+        leading: true,
+        trailing: false,
+      }
+    );
 
     render() {
       return <WrappedComponent {...this.props} onClick={this.onClick} />;

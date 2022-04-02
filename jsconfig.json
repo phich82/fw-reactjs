@@ -15,8 +15,9 @@
       "@stores": ["stores"],
       "@utils": ["utils"],
       "@shared": ["modules/shared"],
-      "@globals": ["globals"],
-      "@validations": ["globals/validations"],
+      "@bootstrap": ["bootstrap"],
+      "@validations": ["bootstrap/validations"],
+      "@ui": ["components/ui"],
       "@mockup": [".mockup"]
     }
   },

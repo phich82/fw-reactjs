@@ -52,7 +52,6 @@ const Home = ({ lang, actChangeLanguage, navigation }) => {
   return (
     <div>
       <h1 className="test">Home</h1>
-      <button onClick={() => navigation.navigate('test')}>Go Test</button>
     </div>
   );
 };

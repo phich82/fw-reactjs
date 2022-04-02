@@ -7,7 +7,7 @@ import configureStore from './stores';
 import { initApplication } from './redux';
 import { AppRouting } from './routes';
 
-import './globals';
+import './bootstrap';
 
 const { persistor, store } = configureStore();
 

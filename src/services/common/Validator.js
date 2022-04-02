@@ -1,6 +1,6 @@
 import moment from 'moment';
 import validate from 'validate.js';
-import { RuleSet } from './../../globals/validations';
+import { RuleSet } from '../../bootstrap/validations';
 
 // Before using it (datetime), we must add the parse and format functions
 // Here is a sample implementation using moment.js

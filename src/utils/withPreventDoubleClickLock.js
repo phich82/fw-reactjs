@@ -3,31 +3,23 @@ import { debounce } from 'lodash';
 
 const withPreventDoubleClickLock = WrappedComponent => {
   class PreventDoubleClickLock extends React.PureComponent {
-    debouncedOnPress = () => {
-      this.props.onPress && this.props.onPress();
-    };
+    noop = () => {};
 
-    touchedBounce = () => {
-      return this.props.touchedTime;
-    };
-
-    onPress = () => {
+    onClick = () => {
       // previous unlock status
-      let unlock = this.props.unlock === false ? false : true;
+      let lock = this.props.lock === true ? true : false;
       // lock tapping on another buttons (current button is being processed)
-      if (typeof this.props.setUnlock === 'function') {
-        this.props.setUnlock();
-      }
+      this.props.setLock && this.props.setLock();
       // only execute onPress event when it is not locked
-      unlock &&
-        debounce(this.debouncedOnPress, this.touchedBounce() || 300, {
+      !lock &&
+        debounce(this.props.onClick || this.noop, this.props.delay || 300, {
           leading: true,
           trailing: false,
         })();
     };
 
     render() {
-      return <WrappedComponent {...this.props} onPress={this.onPress} />;
+      return <WrappedComponent {...this.props} onClick={this.onClick} />;
     }
   }
 
