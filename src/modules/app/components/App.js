@@ -3,7 +3,10 @@ import { Footer, Header } from '../../../modules';
 import { WithPreventDoubleClick, WithPreventDoubleClickHook } from '../../../utils';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { ThemeContextProvider, themes, ThemeButton } from '@modules';
+import { Signin } from '@components';
 
+import '../../../assets/css/normalize.css';
+import '../../../assets/css/main.css';
 import '../styles/App.css';
 
 const App = ({ lang, isLoggedIn, theme, actChangeTheme }) => {
@@ -43,6 +46,8 @@ const App = ({ lang, isLoggedIn, theme, actChangeTheme }) => {
           style={{ width: '200px', textAlign: 'center' }}
           containerStyle={{padding: '5px', backgroundColor: 'red'}}
         />
+
+        <Signin />
 
         <Outlet />
 
