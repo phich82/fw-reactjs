@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Input from './Input';
+import Input from '../Input';
 
 const INPUT_TYPES = ['text', 'file', 'password', 'submit'];
 
