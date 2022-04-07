@@ -1,9 +1,9 @@
 import ClickableBox from './atoms/ClickableBox';
-import DoubleClickBox from './atoms/DoubleClickBox';
+import DoubleClickableBox from './atoms/DoubleClickableBox';
 import Signin from './organisms/Signin';
 
 export {
   ClickableBox,
-  DoubleClickBox,
+  DoubleClickableBox,
   Signin,
 };

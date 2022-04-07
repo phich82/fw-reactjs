@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 const INPUT_TYPES = ['text', 'file', 'password', 'submit'];
 
 const Input = ({ value, is, isDisabled, type, size, onChange, ...rest }) => {

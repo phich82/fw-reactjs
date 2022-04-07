@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 const Switch = ({ type, isOn, isDisabled, onToggle, propsContainer, ...rest }) => {
   const [isOnSwitch, setIsOnSwitch] = useState(isOn || false);
   const getClassName = () => {

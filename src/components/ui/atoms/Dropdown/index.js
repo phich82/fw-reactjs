@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 const Dropdown = ({ data, label, labelStyle, containerStyle, contentStyle, useLink, valueKey, textKey, onClick, ...rest }) => {
   const handleClick = (e, row, idx) => {
     e.preventDefault();

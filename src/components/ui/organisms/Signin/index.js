@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
-import Form from '../atoms/Form';
-import Password from '../molecules/Password';
-import Username from '../molecules/Username';
+import Form from '../../atoms/Form';
+import Password from '../../molecules/Password';
+import Username from '../../molecules/Username';
 
 const Signin = ({ propsUsername, propsPassword }) => {
   return (

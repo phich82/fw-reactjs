@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import Input from '../Input';
 
+import './style.css';
+
 const INPUT_TYPES = ['text', 'file', 'password', 'submit'];
 
 const Button = ({ text, is, isDisabled, type, size, onChange, children, ...rest }) => {

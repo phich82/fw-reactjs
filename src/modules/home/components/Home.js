@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { withRouter } from '@utils';
 
 import '../styles/Home.css';
 import { i18n, trans, changeLocale } from '@locales';
 import { Pipe, Validator } from '@services';
 
+function FancyInput(props, ref) {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    }
+  }));
+  return <input ref={inputRef} {...props} onChange={()=>{}} />;
+}
+
+FancyInput = forwardRef(FancyInput);
+
 const Home = ({ lang, actChangeLanguage, navigation }) => {
+  const btnRef = useRef(null);
   console.log('navigation => ', navigation);
 
   // let errorValidation = Validator.validate({
@@ -52,6 +65,8 @@ const Home = ({ lang, actChangeLanguage, navigation }) => {
   return (
     <div>
       <h1 className="test">Home</h1>
+      <FancyInput value="sdfsfsfsd" ref={btnRef} />
+      <button onClick={() => btnRef.current.focus()}>Click Me</button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { usePreventDoubleClick } from '@hooks';
 
-const DoubleClickBox = ({ text, onClick, onDoubleClick, containerStyle, ...rest }) => {
+const DoubleClickableBox = ({ text, onClick, onDoubleClick, containerStyle, ...rest }) => {
   const [handleClick, handleDoubleClick] = usePreventDoubleClick(onClick, onDoubleClick);
   return (
     <div style={containerStyle} onClick={handleClick} onDoubleClick={handleDoubleClick}>
@@ -9,11 +9,11 @@ const DoubleClickBox = ({ text, onClick, onDoubleClick, containerStyle, ...rest 
   );
 };
 
-DoubleClickBox.defaultProps = {
+DoubleClickableBox.defaultProps = {
   text: '',
   onClick: () => {},
   onDoubleClick: () => {},
   containerStyle: {},
 };
 
-export default DoubleClickBox;
+export default DoubleClickableBox;

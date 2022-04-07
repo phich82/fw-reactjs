@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import Button from '../atoms/Button';
-import Label from '../atoms/Label';
+import Button from '../../atoms/Button';
+import Label from '../../atoms/Label';
 
 const Username = ({ label, placeholder, propsLabel, propsButton }) => {
   console.log('Username => ', { label, placeholder });
@@ -11,6 +11,7 @@ const Username = ({ label, placeholder, propsLabel, propsButton }) => {
     </div>
   );
 };
+
 Username.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,

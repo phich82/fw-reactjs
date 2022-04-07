@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 const SLIDER_TYPES = ['square', 'circle', 'image'];
 
 const Slider = ({ min, max, value, type, isDisabled, onChange, propsContainer, ...rest }) => {

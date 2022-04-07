@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 const OutlineButton = ({ text, is, isDisabled, size, children, ...rest }) => {
   const getClassName = () => {
     let className = ` btn-outline-${is}`;
